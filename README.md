@@ -1,8 +1,8 @@
-# `pylang`
+# `pylang` -  v 0.1.0
 
-**Multiple language/runtime-env installer written in Python for Debian/Ubuntu based distros**
+**Multiple language/runtime-env installer written in Python**
 
-##Version 0.1.0
+* Works with Debian/Ubuntu based Distros
 
 #Installation
 
@@ -15,7 +15,6 @@
 * Clone the repo `git clone https://github.com/harshasrinivas/pylang.git`
 * Run `python setup.py install`
 
-<br>
 
 #Options
 
