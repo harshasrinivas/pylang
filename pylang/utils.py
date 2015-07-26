@@ -6,6 +6,7 @@ from __future__ import absolute_import
 from future.standard_library import install_aliases
 install_aliases()
 
+import apt
 import os
 import sys
 
@@ -14,6 +15,13 @@ def exception():
     print("Enter a valid language. For help, type 'pylang -i'")
     sys.exit(0)
 
+def check_package(pkg):
+    cache = apt.Cache()
+    if cache[pkg].is_installed:
+        return True
+    else:
+        return False
+    
 
 # INSTALLER FUNCTION
 
@@ -57,3 +65,21 @@ def installer(lang):
 
     if lang == "erlang":
         os.system('sudo apt-get install erlang erlang-doc')
+    if lang == "coffee":
+        os.system('sudo apt-get install git-core curl build-essential openssl libssl-dev')
+        if check_package('nodejs'):
+            if check_package('npm'):# npm nowadays comes with nodejs
+               os.system('sudo npm install -g coffee-script')
+            else:
+                os.system('sudo apt-get install npm')
+                os.system('sudo npm install -g coffee-script')
+                
+        else:
+            os.system('sudo apt-get update')
+            os.system('sudo apt-get install nodejs')
+            os.system('sudo apt-get install npm')# in case npm was not packaged with nodejs
+            os.system('sudo npm install -g coffee-script')
+
+            
+
+        
