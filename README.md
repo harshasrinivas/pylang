@@ -42,6 +42,7 @@
 - [x] rust
 - [x] ruby
 - [x] erlang
+- [x] coffee
 
 #License
 
