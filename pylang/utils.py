@@ -6,8 +6,10 @@ from __future__ import absolute_import
 from future.standard_library import install_aliases
 install_aliases()
 
+import apt
 import os
 import sys
+
 
 def exception():
     """runs everytime an exception is caught"""
@@ -15,6 +17,12 @@ def exception():
     sys.exit(0)
 
 
+def check_package(pkg):
+    cache = apt.Cache()
+    if cache[pkg].is_installed:
+        return True
+    else:
+        return False
 # INSTALLER FUNCTION
 
 
@@ -45,7 +53,8 @@ def installer(lang):
         os.system('sudo apt-get install r-base r-base-dev')
 
     if lang == "haskell":
-        os.system('sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"')
+        os.system('sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu \
+            $(lsb_release -sc) universe"')
         os.system('sudo apt-get update')
         os.system('sudo apt-get install haskell-platform')
 
@@ -57,3 +66,17 @@ def installer(lang):
 
     if lang == "erlang":
         os.system('sudo apt-get install erlang erlang-doc')
+    if lang == "coffee":
+        os.system('sudo apt-get install git-core \
+                curl build-essential openssl libssl-dev')
+        if check_package('nodejs'):
+            if check_package('npm'):    # npm nowadays comes with nodejs
+                os.system('sudo npm install -g coffee-script')
+            else:
+                os.system('sudo apt-get install npm')
+                os.system('sudo npm install -g coffee-script')
+        else:
+            os.system('sudo apt-get update')
+            os.system('sudo apt-get install nodejs')
+            os.system('sudo apt-get install npm')
+            os.system('sudo npm install -g coffee-script')
