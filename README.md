@@ -4,19 +4,19 @@
 
 * Works with Debian/Ubuntu based Distros
 
-#Installation
+# Installation
 
-##Using `pip`
+## Using `pip`
 
 `pip install pylang`
 
-##Get the latest build from the Source
+## Get the latest build from the Source
 
 * Clone the repo `git clone https://github.com/harshasrinivas/pylang.git`
 * Run `python setup.py install`
 
 
-#Options
+# Options
 
 ```sh
 -h, --help			show this help message and exit
@@ -25,11 +25,11 @@
 ```
 
 
-#Usage
+# Usage
 
 `$ pylang -i <language/RE>`
 
-#List of languages/REs supported
+# List of languages/REs supported
 
 - [x] c
 - [x] c++
@@ -44,6 +44,6 @@
 - [x] erlang
 - [x] coffee
 
-#License
+# License
 
 ![GPL V3](https://raw.githubusercontent.com/harshasrinivas/pylang/master/images/gpl.png)
